@@ -1,6 +1,6 @@
 ::Max's Windows toolkit
 ::https://maxwellcrafter.com
-::Source/more recent versions, documentation, and more can be found at https://github.com/Maxwell-Fisher/windows-toolkit
+::Source/more recent versions, documentation, and more can be found at https://github.com/Maxwell-Fisher/toolkit
 
  ::a1cbdd7272ff08c2b23eadbd9b92fab96b13e3e6ab8238a47c63075afc9d6870::
 ::                                                                  ::
