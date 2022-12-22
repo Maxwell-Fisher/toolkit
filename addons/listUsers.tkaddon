@@ -1,0 +1,3 @@
+::toolkitAddon List all users
+if "%domainType%" == "nonLocal" net users /domain
+if "%domainType%" == "local" net users

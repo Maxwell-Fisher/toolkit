@@ -1,0 +1,67 @@
+::toolkitAddon Command Prompt
+%systemdrive%
+net session >nul 2>&1
+	fsutil dirty query %systemdrive% >nul
+	if %errorlevel% == 0 (
+	    cd %windir%
+	) else (
+	    cd %userprofile%
+	)
+	echo Michaelsoft Binbows [Version %versionNumber%]
+	echo (c) Maxwellcrafter. Some rights unreserved.
+	echo.
+	:consoleModeLoop
+		title %username%@%computername%:%cd:~0,1%%cd:~2,128%
+		fsutil dirty query %systemdrive% >nul
+		if %errorlevel% == 0 (
+			set consolePrompt="%username%@%computername%:%cd:~0,1%%cd:~2,128%# "
+		) else (
+			set consolePrompt="%username%@%computername%:%cd:~0,1%%cd:~2,128%$ "
+		)
+		set consolePrompt=%consolePrompt:\=/%
+		set /p consoleInput=%consolePrompt%
+		if "%consoleInput:~0,5%" == "exit " exit /b
+		if "%consoleInput%" == "exit" exit /b
+
+		if "%consoleInput%" == "help" (
+			call :customHelp
+			goto consoleModeLoop
+		)
+		
+		if "%consoleInput%" == "help win" (
+			set "consoleInput=help"
+		)
+		
+		if "%consoleInput%" == "ls" (
+			set "consoleInput=dir"
+		)
+
+		if "%consoleInput%" == "clear" (
+			set "consoleInput=cls"
+		)
+
+		if "%consoleInput:~0,11%" == "traceroute " (
+			set "consoleInput=tracert %consoleInput:~11,1013%"
+		)
+
+		if "%consoleInput%" == "pwd" (
+			set "consoleInput=cd"
+		)
+
+		if "%consoleInput:~0,3%" == "rm " (
+			set "consoleInput=del %consoleInput:~3,1021%"
+		)
+
+
+
+
+
+
+		%consoleInput%
+		echo.
+	goto consoleModeLoop
+	
+	:customHelp
+		echo Test
+		echo.
+	exit /b

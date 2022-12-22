@@ -1,0 +1,9 @@
+::toolkitAddon Remove the "Activate Windows" watermark for this session
+net session >nul 2>&1
+if not "%errorLevel%" == "0" (
+	echo This toolkit addon requires administrative rights to run^^!
+	exit /b
+)
+bcdedit -set TESTSIGNING OFF
+taskkill /F /IM explorer.exe > nul
+explorer.exe > nul
